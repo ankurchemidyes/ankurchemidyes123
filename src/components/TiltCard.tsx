@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -18,8 +18,9 @@ export const TiltCard = ({ children, className, intensity = 12, glow = true }: P
 
   const rotateX = useTransform(sy, [-0.5, 0.5], [intensity, -intensity]);
   const rotateY = useTransform(sx, [-0.5, 0.5], [-intensity, intensity]);
-  const glowX = useTransform(sx, [-0.5, 0.5], ["20%", "80%"]);
-  const glowY = useTransform(sy, [-0.5, 0.5], ["20%", "80%"]);
+  const px = useTransform(mx, [-0.5, 0.5], ["0%", "100%"]);
+  const py = useTransform(my, [-0.5, 0.5], ["0%", "100%"]);
+  const bg = useMotionTemplate`radial-gradient(420px circle at ${px} ${py}, hsl(var(--primary) / 0.22), transparent 60%)`;
 
   const onMove = (e: React.MouseEvent) => {
     const el = ref.current;
@@ -39,20 +40,13 @@ export const TiltCard = ({ children, className, intensity = 12, glow = true }: P
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      whileHover={{ z: 30 }}
-      className={cn("perspective relative", className)}
+      className={cn("perspective relative group", className)}
     >
       {glow && (
         <motion.div
           aria-hidden
+          style={{ background: bg }}
           className="pointer-events-none absolute -inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{
-            background: useTransform(
-              [glowX, glowY] as never,
-              ([x, y]: [string, string]) =>
-                `radial-gradient(400px circle at ${x} ${y}, hsl(var(--primary) / 0.18), transparent 60%)`
-            ),
-          }}
         />
       )}
       {children}
