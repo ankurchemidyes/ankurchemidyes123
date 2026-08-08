@@ -1,25 +1,19 @@
 import { motion } from "framer-motion";
 
 const brands = [
-  { name: "VKC PRIDE", url: "https://www.titasindia.com/collections/vkc-pride" },
-  { name: "WALKAROO", url: "https://www.walkaroo.in/" },
-  { name: "PARAGON", url: "https://www.paragonfootwear.com/" },
-  { name: "ODYSSIA", url: "https://www.odyssia.com/" },
+  { name: "VKC PRIDE" },
+  { name: "WALKAROO" },
+  { name: "PARAGON" },
+  { name: "ODYSSIA" },
 ];
 
-const suppliers = [
-  { name: "THREADS INDIA", url: "https://threadsindia.com/" },
-  { name: "PIDILITE", url: "https://www.pidilite.com/" },
-];
+const suppliers = [{ name: "THREADS INDIA" }, { name: "PIDILITE" }];
 
-const Marquee = ({ items }: { items: { name: string; url: string }[] }) => (
+const Marquee = ({ items }: { items: { name: string }[] }) => (
   <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-6">
     {items.map((b, i) => (
-      <motion.a
+      <motion.div
         key={b.name}
-        href={b.url}
-        target="_blank"
-        rel="noopener noreferrer"
         initial={{ opacity: 0, y: 30, rotateX: -20 }}
         whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -33,7 +27,7 @@ const Marquee = ({ items }: { items: { name: string; url: string }[] }) => (
             {b.name}
           </div>
         </div>
-      </motion.a>
+      </motion.div>
     ))}
   </div>
 );
@@ -65,11 +59,8 @@ export const Brands = () => (
       </motion.div>
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 max-w-2xl mx-auto">
         {suppliers.map((s, i) => (
-          <motion.a
+          <motion.div
             key={s.name}
-            href={s.url}
-            target="_blank"
-            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -79,7 +70,7 @@ export const Brands = () => (
           >
             <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 transition-opacity" />
             <div className="font-display text-lg font-bold tracking-wider">{s.name}</div>
-          </motion.a>
+          </motion.div>
         ))}
       </div>
     </div>
