@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx94kZxkL5G3jU0YqctW6D3FsfPou8AF7N9wV36hwyrcOlSYFUTt4aJOYJufPro5DzU/exec";
+  "https://script.google.com/a/macros/ankurchemidyes.com/s/AKfycbzqPlUjAYMXhJOI46n31GPc3dHTmfHiRabpTiRX91fFKJOj4UFfNwAJu1bRH_EwqE-Z/exec";
 
 export const Contact = () => {
   const [loading, setLoading] = useState(false);
