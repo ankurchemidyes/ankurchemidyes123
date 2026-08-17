@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/a/macros/ankurchemidyes.com/s/AKfycbzqPlUjAYMXhJOI46n31GPc3dHTmfHiRabpTiRX91fFKJOj4UFfNwAJu1bRH_EwqE-Z/exec";
+  "https://script.google.com/macros/s/AKfycbwviLrG0x8RQMaUK5zRPpGaTqbcffAkHvDgXoG1XW8ZW1RVCquy_26DUrm1CxiE0OAd/exec";
 
 export const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -24,14 +24,13 @@ export const Contact = () => {
 
     setLoading(true);
 
-    const body = new URLSearchParams({ name, email, requirements });
+    const body = JSON.stringify({ name, email, requirements });
 
     try {
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body,
       });
 
       form.reset();
