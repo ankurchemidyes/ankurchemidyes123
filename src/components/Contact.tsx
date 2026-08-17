@@ -24,14 +24,13 @@ export const Contact = () => {
 
     setLoading(true);
 
-    const body = new URLSearchParams({ name, email, requirements });
+    const body = JSON.stringify({ name, email, requirements });
 
     try {
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body,
       });
 
       form.reset();
