@@ -3,19 +3,49 @@ import { MapPin, Clock, Mail, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbx94kZxkL5G3jU0YqctW6D3FsfPou8AF7N9wV36hwyrcOlSYFUTt4aJOYJufPro5DzU/exec";
+
 export const Contact = () => {
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = (formData.get("name") as string)?.trim();
+    const email = (formData.get("email") as string)?.trim();
+    const requirements = (formData.get("msg") as string)?.trim();
+
+    if (!name || !email || !requirements) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      (e.target as HTMLFormElement).reset();
+
+    const body = new URLSearchParams({ name, email, requirements });
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+
+      form.reset();
       toast.success("Inquiry sent", {
         description: "We'll get back to you within one business day.",
       });
-    }, 900);
+    } catch (err) {
+      console.error("Inquiry submission failed:", err);
+      toast.error("Something went wrong", {
+        description: "Please try again or email us directly.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
