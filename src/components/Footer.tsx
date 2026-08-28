@@ -2,7 +2,6 @@ import logo from "@/assets/logo.png";
 import { Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
 
 const socials = [
-  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61589184028778", Icon: Facebook },
   { label: "Instagram", href: "https://www.instagram.com/ankur_chemidyes/", Icon: Instagram },
   {
     label: "Threads",
@@ -16,16 +15,17 @@ const socials = [
   { label: "X (Twitter)", href: "https://x.com/AnkurChemidyes", Icon: Twitter },
   { label: "YouTube", href: "https://www.youtube.com/@ankurchemidyesofficial", Icon: Youtube },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ankurchemidyes/", Icon: Linkedin },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61589184028778", Icon: Facebook },
 ];
 
 export const Footer = () => (
-  <footer className="relative border-t border-border/60 py-6 mt-12">
+  <footer className="relative z-10 border-t border-border/60 py-6 mt-12">
     <div className="container">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         {/* Social section — top on mobile, left on desktop */}
         <div className="flex flex-col items-center gap-3 md:items-start md:order-1">
           <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Follow Us</span>
-          <div className="flex items-center gap-2.5">
+          <div className="relative z-20 flex items-center gap-2.5">
             {socials.map(({ label, href, Icon }) => (
               <a
                 key={label}
@@ -34,9 +34,9 @@ export const Footer = () => (
                 rel="noopener noreferrer"
                 aria-label={label}
                 title={label}
-                className="group relative flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-surface-1/60 text-muted-foreground shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-primary hover:shadow-elevated"
+                className="group relative z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-border/60 bg-surface-1/60 text-muted-foreground shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-primary hover:shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <Icon className="h-[18px] w-[18px]" strokeWidth={2} />
+                <Icon className="pointer-events-none relative z-10 h-[18px] w-[18px]" strokeWidth={2} />
                 <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 bg-gradient-glow group-hover:opacity-30" />
               </a>
             ))}
