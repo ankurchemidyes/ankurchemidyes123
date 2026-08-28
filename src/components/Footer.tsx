@@ -1,14 +1,15 @@
 import logo from "@/assets/logo.png";
-import { Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
 
 const socials = [
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61589184028778", Icon: Facebook },
   { label: "Instagram", href: "https://www.instagram.com/ankur_chemidyes/", Icon: Instagram },
   {
     label: "Threads",
     href: "https://www.threads.com/@ankur.chemidyes",
     Icon: () => (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-[18px] w-[18px]">
-        <path d="M12.186 24h-.002c-3.582-.024-6.334-1.331-8.184-3.74C2.35 17.891 1.5 14.563 1.472 10.184v-.015c.03-4.39.88-7.726 2.527-10.062C5.85 2.348 8.604 1.024 12.186 1h.002c2.786.02 5.137.886 6.985 2.572 1.671 1.524 2.592 3.794 2.735 6.761.024.066.024.333.024.485.067 1.728-.067 3.235-.4 4.528-.067.2-.067.333-.067.467-.4 1.534-.934 2.668-1.6 3.535-1.4 1.8-3.4 2.734-5.735 2.734h-.047c-1.6-.067-3.067-.467-4.334-1.2-.4.2-.8.333-1.267.4-.467.067-.934.067-1.4.067-.467 0-.934-.067-1.4-.134-.4-.067-.8-.2-1.134-.4-.333-.2-.6-.467-.8-.8-.2-.333-.333-.667-.333-1.067 0-.4.133-.734.4-1.067.266-.266.533-.466.933-.533.4-.067.8-.134 1.2-.134.467 0 .934.067 1.4.134.467.067.934.2 1.334.4.4-.2.8-.333 1.267-.4.466-.067.933-.134 1.4-.134.466 0 .933.067 1.4.134.4.067.8.2 1.133.4.334.2.6.467.8.8.2.333.334.667.334 1.067 0 .4-.134.734-.4 1.067-.267.266-.534.466-.934.533-.4.067-.8.134-1.2.134-.466 0-.933-.067-1.4-.134-.466-.067-.933-.2-1.333-.4-.4.2-.8.333-1.267.4-.467.067-.934.134-1.4.134-.467 0-.934-.067-1.4-.134-.4-.067-.8-.2-1.134-.4-.333-.2-.6-.467-.8-.8-.2-.333-.333-.667-.333-1.067 0-.4.133-.734.4-1.067.266-.266.533-.466.933-.533.4-.067.8-.134 1.2-.134.467 0 .934.067 1.4.134.467.067.934.2 1.334.4.4-.2.8-.333 1.267-.4.466-.067.933-.134 1.4-.134.466 0 .933.067 1.4.134.4.067.8.2 1.133.4.334.2.6.467.8.8.2.333.334.667.334 1.067 0 .4-.134.734-.4 1.067-.267.266-.534.466-.934.533-.4.067-.8.134-1.2.134-.466 0-.933-.067-1.4-.134-.466-.067-.933-.2-1.333-.4z" />
+        <path d="M18.263 11.097c-.03-3.486-1.92-5.586-5.111-5.586-2.13 0-3.922.963-4.863 2.499l2.062 1.438c.535-.843 1.272-1.543 2.628-1.543 1.528 0 2.318.85 2.544 2.431a15 15 0 0 0-2.236-.173c-4.125 0-6.068 1.867-6.068 4.336s1.943 3.99 4.804 3.99c3.139 0 5.013-2.115 5.781-4.735.798.361 1.348 1.204 1.348 2.47 0 3.387-3.907 5.232-7.22 5.232-4.885 0-8.077-3.207-8.077-8.424 0-6.392 4.223-10.487 9.9-10.487 3.808 0 5.69 1.671 6.97 3.914l2.108-1.475C21.44 2.078 18.331 0 13.663 0 6.227 0 1.168 5.277 1.168 12.934c0 7 4.953 11.066 10.856 11.066 4.878 0 9.809-2.846 9.809-7.716 0-2.545-1.46-4.231-3.569-5.187m-6.33 4.855c-1.077 0-2.026-.512-2.026-1.453 0-1.483 1.822-1.934 3.606-1.934.678 0 1.34.045 1.927.173-.422 1.927-1.671 3.215-3.508 3.214Z" />
       </svg>
     ),
   },
@@ -18,22 +19,13 @@ const socials = [
 ];
 
 export const Footer = () => (
-  <footer className="relative border-t border-border/60 py-12 mt-12">
+  <footer className="relative border-t border-border/60 py-6 mt-12">
     <div className="container">
-      <div className="flex flex-col items-center gap-10">
-        {/* Brand + tagline */}
-        <div className="flex items-center gap-3">
-          <img src={logo} alt="Ankur Chemidyes" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-lg shadow-elevated" />
-          <div className="text-center md:text-left">
-            <div className="font-display font-semibold">Ankur Chemidyes</div>
-            <div className="text-xs text-muted-foreground">Premier Suppliers of Footwear Raw Materials</div>
-          </div>
-        </div>
-
-        {/* Social section */}
-        <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        {/* Social section — top on mobile, left on desktop */}
+        <div className="flex flex-col items-center gap-3 md:items-start md:order-1">
           <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Follow Us</span>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {socials.map(({ label, href, Icon }) => (
               <a
                 key={label}
@@ -42,7 +34,7 @@ export const Footer = () => (
                 rel="noopener noreferrer"
                 aria-label={label}
                 title={label}
-                className="group relative flex h-11 w-11 items-center justify-center rounded-xl border border-border/60 bg-surface-1/60 text-muted-foreground shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-primary hover:shadow-elevated"
+                className="group relative flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-surface-1/60 text-muted-foreground shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-primary hover:shadow-elevated"
               >
                 <Icon className="h-[18px] w-[18px]" strokeWidth={2} />
                 <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 bg-gradient-glow group-hover:opacity-30" />
@@ -51,13 +43,23 @@ export const Footer = () => (
           </div>
         </div>
 
-        {/* Nav */}
+        {/* Brand + tagline — bottom on mobile, right on desktop */}
+        <div className="flex items-center gap-3 md:order-2">
+          <img src={logo} alt="Ankur Chemidyes" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-lg shadow-elevated" />
+          <div className="text-center md:text-right">
+            <div className="font-display font-semibold">Ankur Chemidyes</div>
+            <div className="text-xs text-muted-foreground">Premier Suppliers of Footwear Raw Materials</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar: nav + copyright */}
+      <div className="mt-5 flex flex-col items-center gap-3 border-t border-border/40 pt-4 md:flex-row md:justify-between">
         <nav className="flex items-center gap-6 text-sm text-muted-foreground">
           <a href="#home" className="hover:text-foreground transition-colors">Home</a>
           <a href="#products" className="hover:text-foreground transition-colors">Products</a>
           <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
         </nav>
-
         <div className="text-xs text-muted-foreground text-center">© {new Date().getFullYear()} Ankur Chemidyes. All rights reserved.</div>
       </div>
     </div>
