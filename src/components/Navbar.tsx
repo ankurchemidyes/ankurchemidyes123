@@ -63,13 +63,11 @@ export const Navbar = () => {
               </a>
             ))}
             <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/videos"
               className="ml-2 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:-translate-y-0.5"
             >
               <span className="grid h-4 w-4 place-items-center rounded-sm bg-white/20">▶</span>
-              My Vlogs
+              Videos
             </a>
           </div>
 
@@ -106,6 +104,13 @@ export const Navbar = () => {
                   {l.label}
                 </a>
               ))}
+              <a
+                href="/videos"
+                onClick={() => setOpen(false)}
+                className="rounded-xl bg-gradient-primary px-4 py-3 text-sm font-medium text-primary-foreground"
+              >
+                Videos
+              </a>
               <div className="pt-2 sm:hidden">
                 <ThemeToggle />
               </div>
